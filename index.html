@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="message"></div>
+    <input type="number" id="number">
+    <button id="guessButton">Guess</button>
+    <div id="container"></div>
+
+    <script>
+        let button = document.getElementById("guessButton");
+        let result = Math.round(Math.random()*10);
+        let guessInput = document.getElementById("number");  
+        let container = document.getElementById("container");
+        let array_result = new Array();
+        let message = document.getElementById("message");
+        button.addEventListener("click",function(){
+            console.log(result);
+            if (result < guessInput.value){
+                // alert("Ban da doan lon hon")
+                message.innerHTML = "Your guess was too high, guess lower"
+                message.style.backgroundColor = "red"
+                array_result.push(guessInput.value)
+            }
+            else if(result > guessInput.value){
+                // alert("Ban da doan be hon")
+                message.innerHTML = "Your guess was too low, guess higher"
+                message.style.backgroundColor = "red"
+                array_result.push(guessInput.value)
+            }
+            else{
+                // alert("Ban da doan dung")
+                message.innerHTML = "YAY YOU ARE THE LORD OF THE GUESSES"
+                message.style.backgroundColor = "green"
+                result = Math.round(Math.random()*10);
+                array_result = []
+            }
+            container.innerHTML = "You have already typed: "+ array_result;
+            console.log(array_result);
+            // alert(guessInput.value)
+        });
+    </script>
+</body>
+</html>
